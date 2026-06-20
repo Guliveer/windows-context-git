@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/GitContextMenu.Core/GitContextMenu.Core.csproj" />
+    <Project Path="src/GitContextMenu.ShellExtension/GitContextMenu.ShellExtension.csproj" />
+    <Project Path="src/GitContextMenu.UI/GitContextMenu.UI.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/GitContextMenu.Core.Tests/GitContextMenu.Core.Tests.csproj" />
+  </Folder>
+</Solution>

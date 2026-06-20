@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "mtMPDpYxNls=",
+  "success": true,
+  "projectFilePath": "C:\\Sources\\windows-context-git\\src\\GitContextMenu.UI\\GitContextMenu.UI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\oliwe\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.2\\communitytoolkit.mvvm.8.4.2.nupkg.sha512",
+    "C:\\Users\\oliwe\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\10.0.9\\microsoft.bcl.asyncinterfaces.10.0.9.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,108 @@
+<UserControl x:Class="GitContextMenu.UI.Views.CommitView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:GitContextMenu.UI.ViewModels">
+
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Staged header -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,4">
+            <TextBlock Text="STAGED" Style="{StaticResource SubtleText}" VerticalAlignment="Center"/>
+            <Button Content="Stage All" Margin="12,0,0,0" Padding="8,2"
+                    Command="{Binding StageAllCommand}" FontSize="11"/>
+        </StackPanel>
+
+        <!-- Staged list -->
+        <ListBox Grid.Row="1" ItemsSource="{Binding StagedFiles}"
+                 MaxHeight="150" Margin="0,0,0,8">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type vm:StagedFileItem}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding File.StateLabel}"
+                                   Foreground="{Binding File.State, Converter={StaticResource FileStateColor}}"
+                                   FontFamily="Consolas" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="1" Text="{Binding File.Path}"/>
+                        <Button Grid.Column="2" Content="−" Padding="6,0"
+                                FontSize="14" ToolTip="Unstage"
+                                Command="{Binding DataContext.UnstageFileCommand,
+                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                CommandParameter="{Binding}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!-- Unstaged header -->
+        <TextBlock Grid.Row="2" Text="UNSTAGED" Style="{StaticResource SubtleText}" Margin="0,0,0,4"/>
+
+        <!-- Unstaged list -->
+        <ListBox Grid.Row="3" ItemsSource="{Binding UnstagedFiles}"
+                 MaxHeight="120" Margin="0,0,0,12">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding StateLabel}"
+                                   Foreground="{Binding State, Converter={StaticResource FileStateColor}}"
+                                   FontFamily="Consolas" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Path}"/>
+                        <Button Grid.Column="2" Content="+" Padding="6,0"
+                                FontSize="14" ToolTip="Stage"
+                                Command="{Binding DataContext.StageFileCommand,
+                                    RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                CommandParameter="{Binding}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!-- Commit message -->
+        <TextBox Grid.Row="4" Text="{Binding CommitMessage, UpdateSourceTrigger=PropertyChanged}"
+                 Height="70" AcceptsReturn="True" TextWrapping="Wrap"
+                 Margin="0,0,0,10">
+            <TextBox.Style>
+                <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding CommitMessage}" Value="">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <VisualBrush AlignmentX="Left" AlignmentY="Top" Stretch="None">
+                                        <VisualBrush.Visual>
+                                            <TextBlock Text="Commit message..." Margin="10,6"
+                                                       Foreground="{StaticResource BrushOverlay0}"/>
+                                        </VisualBrush.Visual>
+                                    </VisualBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+
+        <!-- Actions -->
+        <StackPanel Grid.Row="5" Orientation="Horizontal">
+            <Button Content="Commit" Command="{Binding CommitCommand}"
+                    Style="{StaticResource PrimaryButton}"/>
+            <Button Content="Commit &amp; Push" Command="{Binding CommitAndPushCommand}"
+                    Margin="8,0,0,0"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

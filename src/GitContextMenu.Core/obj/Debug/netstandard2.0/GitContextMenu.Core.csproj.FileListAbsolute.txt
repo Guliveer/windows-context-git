@@ -1,0 +1,10 @@
+C:\Sources\windows-context-git\src\GitContextMenu.Core\obj\Debug\netstandard2.0\GitContextMenu.Core.csproj.AssemblyReference.cache
+C:\Sources\windows-context-git\src\GitContextMenu.Core\obj\Debug\netstandard2.0\GitContextMenu.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Sources\windows-context-git\src\GitContextMenu.Core\obj\Debug\netstandard2.0\GitContextMenu.Core.AssemblyInfoInputs.cache
+C:\Sources\windows-context-git\src\GitContextMenu.Core\obj\Debug\netstandard2.0\GitContextMenu.Core.AssemblyInfo.cs
+C:\Sources\windows-context-git\src\GitContextMenu.Core\obj\Debug\netstandard2.0\GitContextMenu.Core.csproj.CoreCompileInputs.cache
+C:\Sources\windows-context-git\src\GitContextMenu.Core\bin\Debug\netstandard2.0\GitContextMenu.Core.deps.json
+C:\Sources\windows-context-git\src\GitContextMenu.Core\bin\Debug\netstandard2.0\GitContextMenu.Core.dll
+C:\Sources\windows-context-git\src\GitContextMenu.Core\bin\Debug\netstandard2.0\GitContextMenu.Core.pdb
+C:\Sources\windows-context-git\src\GitContextMenu.Core\obj\Debug\netstandard2.0\GitContextMenu.Core.dll
+C:\Sources\windows-context-git\src\GitContextMenu.Core\obj\Debug\netstandard2.0\GitContextMenu.Core.pdb

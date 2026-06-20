@@ -1,0 +1,89 @@
+<UserControl x:Class="GitContextMenu.UI.Views.StatusView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Branch info -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,12">
+            <TextBlock Text="Branch: " Foreground="{StaticResource BrushOverlay0}"/>
+            <TextBlock Text="{Binding Branch}" Foreground="{StaticResource BrushBlue}" FontWeight="SemiBold"/>
+            <TextBlock Margin="16,0,4,0" Foreground="{StaticResource BrushGreen}"
+                       Text="{Binding Ahead, StringFormat='↑{0}'}"
+                       Visibility="{Binding Ahead, Converter={StaticResource BoolToVisibility}}"/>
+            <TextBlock Foreground="{StaticResource BrushRed}"
+                       Text="{Binding Behind, StringFormat='↓{0}'}"
+                       Visibility="{Binding Behind, Converter={StaticResource BoolToVisibility}}"/>
+        </StackPanel>
+
+        <!-- Clean state -->
+        <TextBlock Grid.Row="1" Text="Working tree clean." Foreground="{StaticResource BrushGreen}"
+                   FontStyle="Italic" Margin="0,0,0,8"
+                   Visibility="{Binding IsClean, Converter={StaticResource BoolToVisibility}}"/>
+
+        <!-- STAGED section — widoczna tylko gdy jest coś staged -->
+        <TextBlock Grid.Row="2" Text="STAGED" Style="{StaticResource SubtleText}" Margin="0,0,0,4"
+                   Visibility="{Binding HasStaged, Converter={StaticResource BoolToVisibility}}"/>
+        <ListBox Grid.Row="3" ItemsSource="{Binding StagedFiles}" MaxHeight="150" Margin="0,0,0,10"
+                 Visibility="{Binding HasStaged, Converter={StaticResource BoolToVisibility}}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding StateLabel}" Width="20"
+                                   Foreground="{Binding State, Converter={StaticResource FileStateColor}}"
+                                   FontFamily="Consolas" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Path}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!-- UNSTAGED section — widoczna tylko gdy jest coś unstaged -->
+        <TextBlock Grid.Row="4" Text="UNSTAGED" Style="{StaticResource SubtleText}" Margin="0,0,0,4"
+                   Visibility="{Binding HasUnstaged, Converter={StaticResource BoolToVisibility}}"/>
+        <ListBox Grid.Row="5" ItemsSource="{Binding UnstagedFiles}" MaxHeight="150" Margin="0,0,0,10"
+                 Visibility="{Binding HasUnstaged, Converter={StaticResource BoolToVisibility}}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding StateLabel}" Width="20"
+                                   Foreground="{Binding State, Converter={StaticResource FileStateColor}}"
+                                   FontFamily="Consolas" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Path}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!-- UNTRACKED section — widoczna tylko gdy są untracked pliki -->
+        <TextBlock Grid.Row="6" Text="UNTRACKED" Style="{StaticResource SubtleText}" Margin="0,0,0,4"
+                   Visibility="{Binding HasUntracked, Converter={StaticResource BoolToVisibility}}"/>
+        <ListBox Grid.Row="7" ItemsSource="{Binding UntrackedFiles}" MaxHeight="120" Margin="0,0,0,10"
+                 Visibility="{Binding HasUntracked, Converter={StaticResource BoolToVisibility}}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="? " Width="20" Foreground="{StaticResource BrushOverlay0}"
+                                   FontFamily="Consolas" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding}" Foreground="{StaticResource BrushOverlay0}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!-- Refresh button -->
+        <Button Grid.Row="8" Content="Refresh" HorizontalAlignment="Left"
+                Command="{Binding RefreshCommand}"/>
+    </Grid>
+</UserControl>

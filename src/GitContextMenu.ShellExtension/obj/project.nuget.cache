@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "HboL4GKbRaY=",
+  "success": true,
+  "projectFilePath": "C:\\Sources\\windows-context-git\\src\\GitContextMenu.ShellExtension\\GitContextMenu.ShellExtension.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\oliwe\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\10.0.9\\microsoft.bcl.asyncinterfaces.10.0.9.nupkg.sha512",
+    "C:\\Users\\oliwe\\.nuget\\packages\\sharpshell\\2.7.2\\sharpshell.2.7.2.nupkg.sha512",
+    "C:\\Users\\oliwe\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.1.2\\system.runtime.compilerservices.unsafe.6.1.2.nupkg.sha512",
+    "C:\\Users\\oliwe\\.nuget\\packages\\system.threading.tasks.extensions\\4.6.3\\system.threading.tasks.extensions.4.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}
