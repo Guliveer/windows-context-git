@@ -1,0 +1,15 @@
+# Linguist overrides
+
+# .NET build outputs
+bin/** linguist-generated
+obj/** linguist-generated
+
+# Visual Studio solution and project files are tooling, not source
+*.sln linguist-vendored
+*.slnx linguist-vendored
+*.csproj linguist-vendored
+*.props linguist-vendored
+*.targets linguist-vendored
+
+# XAML is markup for WPF UI — ensure it's detectable
+*.xaml linguist-language=XAML

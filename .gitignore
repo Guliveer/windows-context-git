@@ -1,6 +1,26 @@
+# .NET build outputs
 bin/
 obj/
-*.user
+
+# Visual Studio
 .vs/
 *.suo
-*.DS_Store
+*.user
+
+# Secrets and local overrides — never commit
+.env
+.env.*
+!.env.example
+*.local
+*.local.*
+!*.example
+!*.example.*
+
+# Claude Code
+.remember/
+.omc/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
